@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--leaflet样式文件-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!--leaflet核心JS文件-->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <link href='./leaflet.fullscreen.css' rel='stylesheet'/>
+    <script src='Leaflet.fullscreen.js'></script>
+    <title>fullscreen</title>
+
+<style>
+    /*必须指定宽高度*/
+    #map {
+      width: 800px;
+      height: 500px;
+    }
+  </style>
+</head>
+ 
+<body>
+  <div id="map">
+  </div>
+ 
+  <script>
+    // 创建一个地图
+    var map = L.map("map", {
+        fullscreenControl: {
+            pseudoFullscreen: false
+        },
+      center: [23.127013, 113.366266],
+      zoom: 8
+    });
+ 
+    // 选择瓦片数据源
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
+ 
+    // 添加一个标记点并且在弹出层上显示文本
+    L.marker([23.127013, 113.366266]).addTo(map).bindPopup('我在这里').openPopup();
+  </script>
+ 
+</body>
+</html>
